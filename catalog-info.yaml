@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "jboss-eap-srv"
+  description: "A cool quarkus app"
+  annotations:
+    argocd/app-name: jboss-eap-srv-dev
+    backstage.io/kubernetes-id: jboss-eap-srv
+    backstage.io/kubernetes-namespace: jboss-eap-srv-dev
+    janus-idp.io/tekton: jboss-eap-srv
+    backstage.io/source-location: url:https://github.com/janus-backstage/jboss-eap-srv
+    backstage.io/techdocs-ref: url:https://github.com/janus-backstage/jboss-eap-srv
+    gitlab.com/project-slug: janus-backstage/jboss-eap-srv
+    quay.io/repository-slug: "/jboss-eap-srv"
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces/#https://github.com/janus-backstage/jboss-eap-srv
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces/#https://github.com/janus-backstage/jboss-eap-srv?che-editor=che-incubator/che-idea/latest
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user1"
+  providesApis:
+    - "jboss-eap-srv"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "jboss-eap-srv"
+  description: "A cool quarkus app"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "user1"
+  definition:
+    $text: ./openapi.yaml
